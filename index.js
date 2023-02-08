@@ -1,12 +1,15 @@
 const { createServer } = require("http");
 const express = require("express");
 const newsFeed = require("./validators/newsFeed.js");
+const dotenv = require("dotenv");
+dotenv.config();
 const app = express();
+const PORT = process.env.PORT || 7071;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const { pool } = require("./db.js");
 const server = createServer(app);
-server.listen(7071, () => console.log("Server running on port 7071"));
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 const { Server } = require("ws");
 const ws_server = new Server({ server, path: "/ws" });
 ws_server.on("connection", (ws) => {
