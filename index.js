@@ -1,4 +1,4 @@
-const { createServer } = require("https");
+const { createServer } = require("http");
 const express = require("express");
 const newsFeed = require("./validators/newsFeed.js");
 const dotenv = require("dotenv");
